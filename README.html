@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/styles.css">
+    <link rel="icon" type="image/png" href="./public/favicon.png">
+    <title>Shoe Shelf</title>
+
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-auth.js"></script>
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyAhaRGiM4SgcMWETJb792iTk-tzDj9vj54",
+            authDomain: "workshop-2-88cca.firebaseapp.com",
+            databaseURL: "https://workshop-2-88cca.firebaseio.com",
+            projectId: "workshop-2-88cca",
+            storageBucket: "workshop-2-88cca.appspot.com",
+            messagingSenderId: "224076183647",
+            appId: "1:224076183647:web:0e94364179335b7b8c43ea"
+        };
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./node_modules/handlebars/dist/handlebars.js"></script>
+    <script src="./scripts/service.js" defer></script>
+    <script src="./scripts/router.js" defer></script>
+    <script src="./scripts/init.js" defer></script>
+</head>
+
+<body>
+
+    <main id="app"></main>
+    <script type="text/x-handlebars-template" id="shoe-template">
+
+        {{#each shoes}}
+        <div class="shoe">
+            <img id="imgRes" src={{this.imageUrl}}>
+            <h3>{{this.name}}</h3>
+            <a href="/details/{{idOffer}}" onclick="navigateHandler(event)">Buy it for ${{this.price}}</a>
+        </div>
+        {{else}}
+        <div>
+            <h1>No offers to show</h1>
+        </div>
+        {{/each}}
+
+    </script>
+    <script type="text/x-handlebars-template" id="header-template">
+
+        <header>
+            <nav onclick="headerEventListener(event)">
+                <ul>
+                    {{#if isLogged}}
+                    <li>
+                        <a href="/createOffer">Create new offer</a>
+                    </li>
+                    <li class="site-logo">Shoe</li>
+                    <li>
+                        <a href="/home">
+                            <img href="/home" src="../public/sneakers.png " alt="/home">
+                        </a>
+                    </li>
+                    <li class="site-logo ">Shelf</li>
+                    <li>Welcome, {{email}} |
+                        <a href="/logout">Logout</a>
+                    </li>
+                    {{else}}
+                    <li class="site-logo">Shoe</li>
+                    <li>
+                        <a href="/home">
+                            <img href="/home" src="../public/sneakers.png " alt="/home">
+                        </a>
+                    </li>
+                    <li class="site-logo ">Shelf</li>
+                    {{/if}}
+
+                </ul>
+            </nav>
+        </header>
+
+    </script>
+
+    <script type="text/x-handlebars-template" id="footer-template">
+        <footer>
+            <p><a href="https://softuni.bg">Software University</a> - JS Applications @ 2020</p>
+        </footer>
+    </script>
+</body>
+
+</html>
