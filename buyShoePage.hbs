@@ -1,0 +1,28 @@
+{{> header }}
+ <div class="offer-details">
+     {{#if desc}}
+            <h1>{{name}}</h1>
+            <div class="info">
+                <img src={{imageUrl}} alt="">
+                <div class="description">{{description}}<br>
+                    <br>
+                    <p class="price">${{price}}</p>
+                </div>
+            </div>
+            <div class="actions" >
+            {{#if isSalesmen}}
+                <a href="/edit">Edit</a>
+                <a href="/delete" onclick="deleteProductBtn(event)">Delete</a>
+                {{else}}
+                <a href="/buy" onclick="buyProductBtn(event)">Buy</a>
+                {{/if}}
+                {{#if isBought}}
+                <span>Bought</span>
+                {{/if}}
+            </div>
+        </div>
+{{else}}
+        <h1>No description</h1>h1
+     {{/if}}
+
+{{> footer }}

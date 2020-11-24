@@ -1,0 +1,18 @@
+{{> header }}
+<h1>Login</h1>
+        <p class="form-info">Don't have account?
+            <a href="/register" onclick="navigateHandler(event)">Register now</a> and fix that!
+        </p>
+        <form onsubmit="loginForm(event)">
+            <div>
+                <input type="email" id="login-Email" placeholder="Email...">
+            </div>
+
+            <div>
+                <input type="password" id="login-Password" placeholder="Password...">
+            </div>
+            <div>
+                <button>Login</button>
+            </div>
+        </form>
+        {{> footer }}
